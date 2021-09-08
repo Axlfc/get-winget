@@ -1,4 +1,4 @@
-# install-winget
+# get-winget
 Windows shell &amp; powershell script to install last version of winget, directly from windows shell.
 ### Useful link (spanish)
   - https://docs.microsoft.com/es-es/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1
