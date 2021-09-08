@@ -1,13 +1,8 @@
 # get-winget
-Windows shell &amp; powershell script to install last version of winget, directly from windows shell.
-### Useful link (spanish)
-  - https://docs.microsoft.com/es-es/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1
-
-### Useful link (english)
-  - https://github.com/microsoft/winget-cli/releases/tag/v1.0.11692
+Windows shell &amp; powershell script to install last version of winget, Window's default package manager, directly from the Windows shell itself.
 
 ### Install procedure:
-`You may need to run the consoles with administrative privileges.`
+You may need to run the consoles with administrative privileges.
 
 - Knowing actual Windows Execution Policy:
 
@@ -25,21 +20,32 @@ Windows shell &amp; powershell script to install last version of winget, directl
 
 `Set-ExecutionPolicy RemoteSigned`
 
-- Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...)
+Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...) 
 
-`Inside MINGW bash console:`
+Inside MINGW bash console:
 
 `cd ~/Documents/Scripts`
 
 `git clone https://github.com/Axlfc/get-winget`
 
+Back to cmd or Powershell:
+
 - Navigate to the same folder via cmd or powershell (example):
+
 `cd c:\Users\USERNAME\Documents\Scripts\get-winget`
 
 - Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
 
 `.\install-winget.ps1`
 
-- Reconsider changing back to the previous Execution Policy you had previously from the changes made in previous steps.
+- Reconsider changing back to the previous Execution Policy you had before the changes made (if there are any) in the previous steps.
 
 `Set-ExecutionPolicy Default`
+
+- Now you should be able to install applications via command using `winget`:
+
+Example:
+
+`winget install git`
+
+Running this in cmd/powershell will install again MINGW into your Windows computer.
