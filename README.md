@@ -8,6 +8,7 @@ Windows shell &amp; powershell script to install last version of winget, directl
 
 ### Install procedure:
 - Knowing actual Windows Execution Policy:
+
 `Get-ExecutionPolicy`
 
 - To get all the execution directives that affect the current session and display them in order of precedence.
@@ -34,3 +35,6 @@ Windows shell &amp; powershell script to install last version of winget, directl
 
 - Execute `install-winget` script to begin the installation of winget on the computer.
 `.\install-winget.ps1`
+
+- Reconsider changing back to the previous Execution Policy you had previously from the changes made in previous steps.
+
