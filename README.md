@@ -1,5 +1,5 @@
 # get-winget
-Windows shell &amp; powershell script to install last version of winget, Window's default package manager, directly from the Windows shell itself.
+Windows shell &amp; powershell script to install version v1.0.11692 of winget, Window's default package manager, directly from the Windows shell itself.
 
 ### Install procedure:
 You may need to run the consoles with administrative privileges.
