@@ -7,6 +7,8 @@ Windows shell &amp; powershell script to install last version of winget, directl
   - https://github.com/microsoft/winget-cli/releases/tag/v1.0.11692
 
 ### Install procedure:
+`You may need to run the consoles with administrative privileges.`
+
 - Knowing actual Windows Execution Policy:
 
 `Get-ExecutionPolicy`
@@ -24,8 +26,6 @@ Windows shell &amp; powershell script to install last version of winget, directl
 `Set-ExecutionPolicy RemoteSigned`
 
 - Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...)
-
-`You may need to run it with administrative privileges.`
 
 `Inside MINGW bash console:`
 
