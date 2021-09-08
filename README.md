@@ -11,7 +11,7 @@ Windows shell &amp; powershell script to install last version of winget, directl
 
 `Get-ExecutionPolicy`
 
-- To get all the execution directives that affect the current session and display them in order of precedence.
+- To get all the execution directives that affect the current session and display them in order of precedence:
 
 `Get-ExecutionPolicy -List`
 
@@ -20,21 +20,26 @@ Windows shell &amp; powershell script to install last version of winget, directl
 `Get-ExecutionPolicy -Scope CurrentUser`
 
 - Enable Execution of scripts (be careful to know your previous Policy of execution and to launch shell with administrator privileges, consider changing it back to the same Execution Policy as the previous one after installing winget via this script to prevent possible malware vulnerabilities associated with the Execution Policy. You should be knowing what are you doing... )
+
 `Set-ExecutionPolicy RemoteSigned`
 
--Clone this repository into your desired folder (You should use the [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...)
+- Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...)
 
-`Inside MINGW:`
+`You may need to run it with administrative privileges.`
 
-`cd \Documents\Scripts`
+`Inside MINGW bash console:`
+
+`cd ~/Documents/Scripts`
 
 `git clone https://github.com/Axlfc/get-winget`
 
--Navigate to the same folder from cmd or powershell (example):
+- Navigate to the same folder via cmd or powershell (example):
 `cd c:\Users\USERNAME\Documents\Scripts\get-winget`
 
-- Execute `install-winget` script to begin the installation of winget on the computer.
+- Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
+
 `.\install-winget.ps1`
 
 - Reconsider changing back to the previous Execution Policy you had previously from the changes made in previous steps.
 
+`Set-ExecutionPolicy Default`
