@@ -20,7 +20,7 @@ You may need to run the consoles with administrative privileges.
 
 `Set-ExecutionPolicy RemoteSigned`
 
-Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) to do this. Beware spaces in folder names...) 
+Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder names...) 
 
 Inside MINGW bash console:
 
@@ -38,7 +38,7 @@ Back to cmd or Powershell:
 
 `.\install-winget.ps1`
 
-- Reconsider changing back to the previous Execution Policy you had before the changes made (if there are any) in the previous steps.
+- Reconsider changing back to the previous Execution Policy you had before the changes made (if there are any) in the previous steps. (optional but recommended)
 
 `Set-ExecutionPolicy Default`
 
