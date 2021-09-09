@@ -42,6 +42,7 @@ Back to cmd or Powershell:
 
 - Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
 
+<code>`Invoke-WebRequest https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1 -OutFile install-winget.ps1`</code>
 <code>`.\install-winget.ps1`</code>
 
 - Reconsider changing back to the previous Execution Policy you had before the changes made (if there are any) in the previous steps. (optional but recommended)
