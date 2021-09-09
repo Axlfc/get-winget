@@ -6,33 +6,33 @@ You may need to run the consoles with administrative privileges.
 
 - Knowing actual Windows Execution Policy:
 
-`Get-ExecutionPolicy`
+<code>`Get-ExecutionPolicy`</code>
 
 - To get all the execution directives that affect the current session and display them in order of precedence:
 
-`Get-ExecutionPolicy -List`
+<code>`Get-ExecutionPolicy -List`
 
 - To see the actual scope of the Execution Policy for the current user using the windows machine:
 
-`Get-ExecutionPolicy -Scope CurrentUser`
+<code>`Get-ExecutionPolicy -Scope CurrentUser`</code>
 
 - Enable Execution of scripts (be careful to know your previous Policy of execution and to launch shell with administrator privileges, consider changing it back to the same Execution Policy as the previous one after installing winget via this script to prevent possible malware vulnerabilities associated with the Execution Policy. You should be knowing what are you doing... )
 
-`Set-ExecutionPolicy RemoteSigned`
+<code>`Set-ExecutionPolicy RemoteSigned`</code>
 
 Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder names...) optional
 
 Inside MINGW bash console:
 
-`cd ~/Documents/Scripts`
+<code>`cd ~/Documents/Scripts`</code>
 
-`git clone https://github.com/Axlfc/get-winget`
+<code>`git clone https://github.com/Axlfc/get-winget`</code>
 
 Back to cmd or Powershell:
 
 - Navigate to the same folder via cmd or powershell (example):
 
-`cd c:\Users\USERNAME\Documents\Scripts\get-winget`
+<code>`cd c:\Users\USERNAME\Documents\Scripts\get-winget`</code>
 
 - Check for the [installer script](https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) (https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) 
 
@@ -42,11 +42,11 @@ Back to cmd or Powershell:
 
 - Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
 
-`.\install-winget.ps1`
+<code>`.\install-winget.ps1`</code>
 
 - Reconsider changing back to the previous Execution Policy you had before the changes made (if there are any) in the previous steps. (optional but recommended)
 
-`Set-ExecutionPolicy Default`
+<code>`Set-ExecutionPolicy Default`</code>
 
 - Now you should be able to install applications via command using `winget`:
 
@@ -54,6 +54,6 @@ Back to cmd or Powershell:
 
 Example:
 
-`winget install git`
+<code>`winget install git`</code>
 
 Running this in cmd/powershell will install again MINGW into your Windows computer.
