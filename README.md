@@ -10,7 +10,7 @@ You may need to run the consoles with administrative privileges.
 
 - To get all the execution directives that affect the current session and display them in order of precedence:
 
-<code>`Get-ExecutionPolicy -List`
+<code>`Get-ExecutionPolicy -List`</code>
 
 - To see the actual scope of the Execution Policy for the current user using the windows machine:
 
