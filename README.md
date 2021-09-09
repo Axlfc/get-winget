@@ -20,7 +20,7 @@ You may need to run the consoles with administrative privileges.
 
 `Set-ExecutionPolicy RemoteSigned`
 
-Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder names...) 
+Clone this repository into your desired folder (You should use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder names...) optional
 
 Inside MINGW bash console:
 
@@ -34,6 +34,8 @@ Back to cmd or Powershell:
 
 `cd c:\Users\USERNAME\Documents\Scripts\get-winget`
 
+- Check for the [installer script](https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) (https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) Download the script, check for recent stable versions of releases of winget github inside the script variable to hold the link of winget's intaller.
+
 - Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
 
 `.\install-winget.ps1`
@@ -43,6 +45,8 @@ Back to cmd or Powershell:
 `Set-ExecutionPolicy Default`
 
 - Now you should be able to install applications via command using `winget`:
+
+- Remove `get-winget` folder and .ps1 file and `winget-installer.msixbundle`
 
 Example:
 
