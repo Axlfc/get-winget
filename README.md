@@ -38,19 +38,25 @@ You may need to run the cmd or Powershell: with administrative privileges. MINGW
 
 - Now you should be able to install applications via command using `winget`:
 
-Example:
+Examples:
+ 
+<code>`winget --version`</code>
+
+<code>`winget show`</code>
+
+Running this in cmd/powershell will install again MINGW and MSYS2 in your Windows computer.
 
 <code>`winget install git`</code>
 
-Running this in cmd/powershell will install again MINGW into your Windows computer.
+<code>`winget install MSYS2`</code>
 
-- Remove `get-winget` folder and .ps1 file and `winget-installer.msixbundle`
+- Remove `get-winget` folder and .ps1 script and `winget-installer.msixbundle` file.
 
 <br></br>
 
 To clone this repository into your desired folder (You can use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder/file names...) `optional`
 
-Inside MINGW bash console:
+Inside MINGW bash console you ca:
 
 <code>`cd ~/Documents/Scripts`</code>
 
