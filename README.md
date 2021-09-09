@@ -2,7 +2,7 @@
 Windows shell &amp; powershell script to install version v1.0.11692 of winget, Window's default package manager, directly from the Windows shell itself.
 
 ### Install procedure:
-You may need to run the consoles with administrative privileges.
+You may need to run the cmd or Powershell: with administrative privileges. MINGW and MSYS2 might be run as administrator also.
 
 - Knowing actual Windows Execution Policy:
 
@@ -19,8 +19,6 @@ You may need to run the consoles with administrative privileges.
 - Enable Execution of scripts (be careful to know your previous Policy of execution and to launch shell with administrator privileges, consider changing it back to the same Execution Policy as the previous one after installing winget via this script to prevent possible malware vulnerabilities associated with the Execution Policy. You should be knowing what are you doing... )
 
 <code>`Set-ExecutionPolicy RemoteSigned`</code>
-
-Back to cmd or Powershell:
 
 - Navigate to the same folder via cmd or powershell (example):
 
