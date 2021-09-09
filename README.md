@@ -34,7 +34,11 @@ Back to cmd or Powershell:
 
 `cd c:\Users\USERNAME\Documents\Scripts\get-winget`
 
-- Check for the [installer script](https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) (https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) Download the script, check for recent stable versions of releases of winget github inside the script variable to hold the link of winget's intaller.
+- Check for the [installer script](https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) (https://github.com/Axlfc/get-winget/blob/main/install-winget.ps1) 
+
+<br></br>
+
+- Download the script, check for recent stable versions of releases of winget github inside the script variable to hold the link of winget's intaller.
 
 - Execute `install-winget` script to begin the installation of winget on the computer if the Execution Policies have been correctly set.
 
