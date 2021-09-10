@@ -48,7 +48,7 @@ Examples:
 
 <code>`winget show`</code>
 
-Running this in cmd/powershell will install again MINGW and MSYS2 in your Windows computer.
+Running this in cmd/powershell will install MINGW, MSYS2, the app you desire and it's in the list shown previously in your Windows computer.
 
 <code>`winget install git`</code>
 
