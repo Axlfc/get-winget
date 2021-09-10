@@ -58,7 +58,7 @@ Running this in cmd/powershell will install MINGW, MSYS2, the app you desire and
 
 To clone this repository into your desired folder (You can use [MINGW](https://gitforwindows.org/) or [MSYS2 with git installed](https://www.youtube.com/watch?v=pb6Yb819pF0) to do this. Beware spaces in folder/file names...) `optional`
 
-Inside MINGW bash console you ca:
+Inside MINGW bash console you can:
 
 <code>`cd ~/Documents/Scripts`</code>
 
