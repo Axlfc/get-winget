@@ -36,7 +36,11 @@ You may need to run the cmd or Powershell: with administrative privileges. MINGW
 
 <code>`Set-ExecutionPolicy Default`</code>
 
-- Now you should be able to install applications via command using `winget`:
+- Remove `get-winget` folder and .ps1 script and `winget-installer.msixbundle` file.
+
+<br></br>
+
+- Now you should be able to install applications via command using `winget`, Windows' package manager.
 
 Examples:
  
@@ -49,8 +53,6 @@ Running this in cmd/powershell will install again MINGW and MSYS2 in your Window
 <code>`winget install git`</code>
 
 <code>`winget install MSYS2`</code>
-
-- Remove `get-winget` folder and .ps1 script and `winget-installer.msixbundle` file.
 
 <br></br>
 
