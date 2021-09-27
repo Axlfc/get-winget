@@ -2,6 +2,7 @@
 Windows shell &amp; powershell script to install version v1.0.11692 of winget, Window's default package manager, directly from the Windows shell itself.
 
 ### Install procedure:
+Install App Installer from Microsoft Store.
 You may need to run the cmd or Powershell: with administrative privileges. MINGW and MSYS2 might be run as administrator also.
 
 - Knowing actual Windows Execution Policy:
