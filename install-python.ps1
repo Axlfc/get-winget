@@ -8,9 +8,9 @@ Write-Host "Python is being downloaded"
   Ensure a concrete path to perform the download and execution of the file.
 #>
 
-Invoke-WebRequest -Uri $MyLink -OutFile python-installer.msixbundle
+Invoke-WebRequest -Uri $MyLink -OutFile python-installer.exe
 
 Add-AppxPackage -Path .\python-installer.exe -ForceUpdateFromAnyVersion -Confirm -ForceTargetApplicationShutdown
 
 Write-Host "python installer downloaded, launching installer."
-.\winget-installer.exe
+.\python-installer.exe
