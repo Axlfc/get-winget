@@ -1,16 +1,3 @@
-Set-ExecutionPolicy RemoteSigned
-$MyLink = "https://www.python.org/ftp/python/3.10.1/python-3.10.1-amd64.exe"
+winget install --accept-package-agreements --accept-source-agreements -h -q python3
 
-
-Write-Host "Python is being downloaded"
-
-<#
-  Ensure a concrete path to perform the download and execution of the file.
-#>
-
-Invoke-WebRequest -Uri $MyLink -OutFile python-installer.exe
-
-Write-Host "python installer downloaded, launching installer."
-
-.\python-installer.exe -ForceUpdateFromAnyVersion -Confirm -ForceTargetApplicationShutdown
 
