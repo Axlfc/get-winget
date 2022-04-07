@@ -9,11 +9,13 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -
 Write-Host "Reboot the computer if it is the first run time and rerun this script"
 Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
 Write-Host "WSL2 launching update"
-Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-#.\wsl2-linux-kernel-installer.msixbundle
+#Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+.\wsl2-linux-kernel-installer.msixbundle
 wsl --set-default-version 2
 wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
+Write-Host "You have 20s to set up your username before this scrips continues its execution."
+Start-Sleep -s 20
 #winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
 
