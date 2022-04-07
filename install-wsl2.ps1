@@ -1,4 +1,4 @@
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy Unrestriced
 
 Write-Host "DO: Installing WSL2"
 # https://thomasward.com/wsl2-x11/ <- Reference
