@@ -29,10 +29,10 @@ Write-Host "Firewall command has been runned within WSL2."
 
 Write-Host "DO: Installing an X11 display server, VcXsrv"
 $MyLink = "https://downloads.sourceforge.net/project/vcxsrv/vcxsrv/1.20.14.0/vcxsrv-64.1.20.14.0.installer.exe?ts=gAAAAABiTrwrBkBOjaym69qeA-PTdoKJ8GqUA1U5YqyxN29ffncDhntgSgKgEV-szjqkRmWySWYswNudLJoo9ewwDJnUgM8dHw%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvcxsrv%2Ffiles%2Flatest%2Fdownload"
-Invoke-WebRequest -Uri $MyLink -OutFile VcXsrv-Windows-X-Server.msixbundle
+Invoke-WebRequest -Uri $MyLink -OutFile VcXsrv-Windows-X-Server.exe
 Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
 #Add-AppxPackage -Path .\VcXsrv-Windows-X-Server.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-.\VcXsrv-Windows-X-Server.msixbundle
+.\VcXsrv-Windows-X-Server.exe
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
