@@ -10,8 +10,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -
 Write-Host "WSL2 installer downloaded, launching installer."
 #Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 #.\wsl2-linux-kernel-installer.msixbundle
-wsl --install -d "Ubuntu"
+wsl --install
 wsl --set-default-version 2
+wsl --install -d "Ubuntu"
 #winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
 
