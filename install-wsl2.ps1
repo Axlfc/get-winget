@@ -1,4 +1,4 @@
-Set-ExecutionPolicy Unrestriced
+Set-ExecutionPolicy Unrestricted
 
 Write-Host "DO: Installing WSL2"
 # https://thomasward.com/wsl2-x11/ <- Reference
