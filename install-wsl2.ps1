@@ -12,7 +12,8 @@ Write-Host "WSL2 launching update"
 
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
-Add-AppxPackage -Path "$AppPath\wsl2-linux-kernel-installer.msixbundle" -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+$AppPath = $AppPath + "\wsl2-linux-kernel-installer.msixbundle"
+Add-AppxPackage -Path $AppPath -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 wsl --set-default-version 2
 wsl --unregister "Ubuntu"
@@ -38,7 +39,10 @@ Write-Host "DO: Installing an X11 display server, VcXsrv"
 $MyLink = "https://downloads.sourceforge.net/project/vcxsrv/vcxsrv/vcxsrv.1.13.0.0.installer.exe?ts=gAAAAABiTtu01DSPfakGxjUn3b-OuXGM7aNxGBZ5INVe-8X0rQGfh8bT9F-3xc9Ful4XciXxYnPrmOqhgMtfLMYWcs489rHPYQ%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvcxsrv%2Ffiles%2Fvcxsrv%2Fvcxsrv.1.13.0.0.installer.exe%2Fdownload"
 Invoke-WebRequest -Uri $MyLink -OutFile VcXsrv-Windows-X-Server.exe
 Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
-Add-AppxPackage -Path "$AppPath\VcXsrv-Windows-X-Server.msixbundle" -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+$AppPath = echo $(Get-Location) | Select-String "C:"
+$AppPath = $AppPath -replace "`n|`r"
+$AppPath = $AppPath + "\VcXsrv-Windows-X-Server.msixbundle"
+Add-AppxPackage -Path $AppPath -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
