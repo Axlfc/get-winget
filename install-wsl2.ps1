@@ -6,11 +6,11 @@ Write-Host "DO: Installing WSL2"
 #$MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
+Write-Host "Reboot the computer if it is the first run time and rerun this script"
 #Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
-Write-Host "WSL2 installer downloaded, launching installer."
+Write-Host "WSL2 launching installer"
 #Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 #.\wsl2-linux-kernel-installer.msixbundle
-wsl --install
 wsl --set-default-version 2
 wsl --install -d "Ubuntu"
 #winget install -s msstore "Ubuntu"
@@ -29,7 +29,7 @@ Write-Host "Firewall command has been runned within WSL2."
 
 
 Write-Host "DO: Installing an X11 display server, VcXsrv"
-$MyLink = "https://downloads.sourceforge.net/project/vcxsrv/vcxsrv/1.20.14.0/vcxsrv-64.1.20.14.0.installer.exe?ts=gAAAAABiTrwrBkBOjaym69qeA-PTdoKJ8GqUA1U5YqyxN29ffncDhntgSgKgEV-szjqkRmWySWYswNudLJoo9ewwDJnUgM8dHw%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvcxsrv%2Ffiles%2Flatest%2Fdownload"
+$MyLink = "https://downloads.sourceforge.net/project/vcxsrv/vcxsrv/vcxsrv.1.13.0.0.installer.exe?ts=gAAAAABiTtu01DSPfakGxjUn3b-OuXGM7aNxGBZ5INVe-8X0rQGfh8bT9F-3xc9Ful4XciXxYnPrmOqhgMtfLMYWcs489rHPYQ%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvcxsrv%2Ffiles%2Fvcxsrv%2Fvcxsrv.1.13.0.0.installer.exe%2Fdownload"
 Invoke-WebRequest -Uri $MyLink -OutFile VcXsrv-Windows-X-Server.exe
 Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
 #Add-AppxPackage -Path .\VcXsrv-Windows-X-Server.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
