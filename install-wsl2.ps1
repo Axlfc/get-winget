@@ -9,8 +9,8 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -
 Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the first run time and rerun this script"
 Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
 Write-Host "WSL2 launching update"
-#Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-.\wsl2-linux-kernel-installer.msixbundle
+Add-AppPackage -path ".\wsl2-linux-kernel-installer.msixbundle" -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+
 wsl --set-default-version 2
 wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
@@ -35,8 +35,7 @@ Write-Host "DO: Installing an X11 display server, VcXsrv"
 $MyLink = "https://downloads.sourceforge.net/project/vcxsrv/vcxsrv/vcxsrv.1.13.0.0.installer.exe?ts=gAAAAABiTtu01DSPfakGxjUn3b-OuXGM7aNxGBZ5INVe-8X0rQGfh8bT9F-3xc9Ful4XciXxYnPrmOqhgMtfLMYWcs489rHPYQ%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvcxsrv%2Ffiles%2Fvcxsrv%2Fvcxsrv.1.13.0.0.installer.exe%2Fdownload"
 Invoke-WebRequest -Uri $MyLink -OutFile VcXsrv-Windows-X-Server.exe
 Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
-#Add-AppxPackage -Path .\VcXsrv-Windows-X-Server.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-.\VcXsrv-Windows-X-Server.exe
+Add-AppPackage -path ".\VcXsrv-Windows-X-Server.msixbundle" -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
