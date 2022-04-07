@@ -3,15 +3,16 @@ Set-ExecutionPolicy RemoteSigned
 Write-Host "DO: Installing WSL2"
 # https://thomasward.com/wsl2-x11/ <- Reference
 
-#$MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+$MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
 Write-Host "Reboot the computer if it is the first run time and rerun this script"
-#Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
-Write-Host "WSL2 launching installer"
-#Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
+Write-Host "WSL2 launching update"
+Add-AppxPackage -Path .\wsl2-linux-kernel-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 #.\wsl2-linux-kernel-installer.msixbundle
 wsl --set-default-version 2
+wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
 #winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
