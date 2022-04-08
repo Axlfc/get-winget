@@ -6,7 +6,7 @@ Write-Host "DO: Installing WSL2"
 $MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All -NoRestart
 Write-Host "Reboot the computer, enable Virtualization in BIOS if isn't aready enabled or if it's the first run time"
 Write-Host "Run again this script after rebooting"
 
