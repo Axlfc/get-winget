@@ -18,10 +18,9 @@ $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msi"
 # TODO: Protect package download if already present from run before reboot
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-msiexec /i $(echo $AppPath)
+msiexec /qn /i $(echo $AppPath)
 #wsl --install -d "Ubuntu"
-
-Write-Host "You have 20s to set up your username before this scrips continues its execution."
+Write-Host "You have 20s to set up WSL2 Update."
 Start-Sleep -s 20
 winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
