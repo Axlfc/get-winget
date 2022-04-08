@@ -7,7 +7,9 @@ $MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
-Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the first run time and rerun this script"
+Write-Host "Reboot the computer, enable Virtualization in BIOS if isn't aready enabled or if it's the first run time"
+Write-Host "Run again this script after rebooting"
+
 
 wsl --set-default-version 2
 
