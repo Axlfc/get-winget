@@ -3,16 +3,9 @@ Set-ExecutionPolicy Unrestricted
 Write-Host "DO: Installing WSL2"
 # https://thomasward.com/wsl2-x11/ <- Reference
 
-$MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
-Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
-Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All -NoRestart
-Write-Host "Reboot the computer, enable Virtualization in BIOS if isn't aready enabled"
-Write-Host "Cancel the run with Ctrl+c or Ctrl+z, reboot if it's the first run time and run again this script"
-
-
 wsl --set-default-version 2
 
+$MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msi"
@@ -27,7 +20,7 @@ msiexec /qn /i $(echo $AppPath)
 
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
-#wsl --unregister "Ubuntu"
+wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
 
 Write-Host "You have to set up Ubuntu, waiting 1 min. If longer is need to wait, configure Ubuntu and run again the script"
@@ -54,8 +47,8 @@ Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\VcXsrv-Windows-X-Server.msixbundle"
-# Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-.\$(echo $AppPath)
+Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+#.\$(echo $AppPath)
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
