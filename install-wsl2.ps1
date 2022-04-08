@@ -21,10 +21,12 @@ if ( ! $condition )
 {
     Write-Host "WSL2 launching update file download"
     Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msi
+    Write-Host "WSL2 launching update install"
+    msiexec /qn /i $(echo $AppPath)
 }
 
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-msiexec /qn /i $(echo $AppPath)
+
 #wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
 
