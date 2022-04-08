@@ -9,7 +9,6 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -
 Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the first run time and rerun this script"
 
 wsl --set-default-version 2
-#wsl --unregister "Ubuntu"
 
 Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msi
 Write-Host "WSL2 launching update"
@@ -19,10 +18,12 @@ $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msi"
 # TODO: Protect package download if already present from run before reboot
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 msiexec /qn /i $(echo $AppPath)
-#wsl --install -d "Ubuntu"
-Write-Host "You have 20s to set up WSL2 Update."
+#wsl --unregister "Ubuntu"
+wsl --install -d "Ubuntu"
+
+Write-Host "You have to set up Ubuntu, please wait."
 Start-Sleep -s 20
-winget install -s msstore "Ubuntu"
+#winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
 
 
