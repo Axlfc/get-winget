@@ -7,18 +7,19 @@ $MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
 Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the first run time and rerun this script"
+
+wsl --set-default-version 2
+wsl --unregister "Ubuntu"
+
 Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
 Write-Host "WSL2 launching update"
-
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msixbundle"
 # TODO: Protect package download if already present from run before reboot
 Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
-
-wsl --set-default-version 2
-wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
+
 Write-Host "You have 20s to set up your username before this scrips continues its execution."
 Start-Sleep -s 20
 #winget install -s msstore "Ubuntu"
