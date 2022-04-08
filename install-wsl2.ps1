@@ -11,7 +11,7 @@ Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the firs
 wsl --set-default-version 2
 #wsl --unregister "Ubuntu"
 
-Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msixbundle
+Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msi
 Write-Host "WSL2 launching update"
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
