@@ -1,4 +1,5 @@
 Write-Host "DO: Configuring Windows firewall to only allow connections to the X11 display server from the WSL2 instance running on your computer."
+wsl --update
 
 Write-Host "Running command in WSL2:"
 # This command isn't probably going to work.
