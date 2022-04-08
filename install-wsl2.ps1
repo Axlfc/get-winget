@@ -44,7 +44,8 @@ Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\VcXsrv-Windows-X-Server.msixbundle"
-Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+# Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+.\$(echo $AppPath)
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
