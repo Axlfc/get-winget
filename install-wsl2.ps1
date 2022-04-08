@@ -13,7 +13,7 @@ Write-Host "WSL2 launching update"
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msixbundle"
-Add-AppxPackage -Path $AppPath -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 wsl --set-default-version 2
 wsl --unregister "Ubuntu"
@@ -42,7 +42,7 @@ Write-Host "VcXsrv Windows X Server installer downloaded, launching installer."
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\VcXsrv-Windows-X-Server.msixbundle"
-Add-AppxPackage -Path $AppPath -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
+Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 
 Write-Host "Adding VcXsrv to autostart (not working)"
