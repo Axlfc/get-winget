@@ -9,8 +9,8 @@ Write-Host "Winget is being downloaded"
 #>
 
 Invoke-WebRequest -Uri $MyLink -OutFile winget-installer.msixbundle
-
+Write-Host "Winget installer downloaded, launching installer."
 Add-AppxPackage -Path .\winget-installer.msixbundle -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
-Write-Host "Winget installer downloaded, launching installer."
+
 #.\winget-installer.msixbundle
