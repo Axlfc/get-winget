@@ -6,6 +6,7 @@ Write-Host "DO: Installing WSL2"
 $MyLink = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
 Write-Host "Reboot the computer, enable Virtualization in BIOS if it is the first run time and rerun this script"
 
 wsl --set-default-version 2
@@ -21,8 +22,8 @@ msiexec /qn /i $(echo $AppPath)
 #wsl --unregister "Ubuntu"
 wsl --install -d "Ubuntu"
 
-Write-Host "You have to set up Ubuntu, please wait."
-Start-Sleep -s 20
+Write-Host "You have to set up Ubuntu, waiting 2 min."
+Start-Sleep -s 120
 #winget install -s msstore "Ubuntu"
 #winget install -s msstore "Debian"
 
