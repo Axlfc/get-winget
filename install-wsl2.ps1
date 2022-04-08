@@ -21,4 +21,5 @@ msiexec /qn /i $(echo $AppPath)
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 
 wsl --unregister "Ubuntu"
+Write-Host "Wait until Ubuntu is fully installed in WSL2"
 wsl --install -d "Ubuntu"
