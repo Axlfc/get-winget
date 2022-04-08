@@ -13,11 +13,17 @@ Write-Host "Run again this script after rebooting"
 
 wsl --set-default-version 2
 
-Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msi
-Write-Host "WSL2 launching update"
 $AppPath = echo $(Get-Location) | Select-String "C:"
 $AppPath = $AppPath -replace "`n|`r"
 $AppPath = $AppPath + "\wsl2-linux-kernel-installer.msi"
+$condition = $(Test-Path -Path $(echo $AppPath))
+if ( ! $condition )
+{
+    Invoke-WebRequest -Uri $MyLink -OutFile wsl2-linux-kernel-installer.msi
+}
+
+Write-Host "WSL2 launching update"
+
 # TODO: Protect package download if already present from run before reboot
 #Add-AppxPackage -Path $(echo $AppPath) -ForceUpdateFromAnyVersion -ForceTargetApplicationShutdown
 msiexec /qn /i $(echo $AppPath)
