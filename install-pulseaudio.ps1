@@ -31,4 +31,10 @@ $mycreds = New-Object System.Management.Automation.PSCredential (".\MYUser", $se
 $binaryPath = "C:\pulse\pulseaudio.exe -F C:\pulse\config.pa --exit-idle-time=-1"
 New-Service -name $serviceName -binaryPathName $binaryPath -displayName $serviceName -startupType Automatic -credential $mycreds
 
-"installation completed"
+"service installation completed"
+
+"START Configure PulseAudio for Windows."
+
+New-Item "C:\pulse\config.pa" -ItemType File -Value "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;172.16.0.0/12
+load-module module-esound-protocol-tcp auth-ip-acl=127.0.0.1;172.16.0.0/12
+load-module module-waveout sink_name=output source_name=input record=0"
