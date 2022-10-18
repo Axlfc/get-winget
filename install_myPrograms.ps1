@@ -34,7 +34,8 @@ $pop_apps = "Mozilla.Firefox",
 "RealVNC.VNCServer",
 "RealVNC.VNCViewer",
 "Audacity.Audacity",
-"BlenderFoundation.Blender"
+"BlenderFoundation.Blender",
+"Microsoft.WindowsTerminal"
 
 foreach ($pop_app in $pop_apps)
 {
