@@ -2,7 +2,7 @@ function Populate-Windows {
 	Param(
 		[Parameter(Mandatory=$true,Position=0)] [String]$ProgramName
 	)
-	winget install -e --id $ProgramName
+	winget install -e --id $ProgramName --force
 }
 $pop_apps = "Mozilla.Firefox", 
 "EpicGames.EpicGamesLauncher", 
