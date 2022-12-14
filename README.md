@@ -64,3 +64,5 @@ Inside MINGW or MINGW from MYSYS2 bash console you can:
 <code>`cd ~/Documents/Scripts`</code>
 
 <code>`git clone https://github.com/Axlfc/get-winget`</code>
+
+# TODO: get winget add_to_terminal_profile
