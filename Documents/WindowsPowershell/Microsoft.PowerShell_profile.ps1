@@ -74,3 +74,19 @@ function git_unstage_function {
 }
 Set-Alias unstage git_unstage_function
 
+function touch_function {
+	New-Item "$args"
+}
+Set-Alias touch touch_function
+
+
+function find_function {
+	Get-ChildItem -Filter "$args" -Recurse -File
+}
+Set-Alias find find_function
+
+
+function ping_function {
+	Test-Connection "$args" | Format-Table -AutoSize
+}
+Set-Alias ping ping_function
