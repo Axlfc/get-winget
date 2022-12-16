@@ -1,35 +1,53 @@
+function touch_function {
+	New-Item "$args"
+}
+Set-Alias touch touch_function
+
+
+function find_function {
+	Get-ChildItem -Filter "$args" -Recurse -File
+}
+Set-Alias find find_function
+
+
+function ping_function {
+	Test-Connection "$args" | Format-Table -AutoSize
+}
+Set-Alias ping ping_function
+
+
 function git_pull_function {
-	git pull "$args[0]"
+	git pull "$args"
 }
 Set-Alias pull git_pull_function
 
 
 function git_push_function {
-	git push "$args[0]"
+	git push "$args"
 }
 Set-Alias push git_push_function
 
 
 function git_commit_function {
-	git commit -am "$args[0]"
+	git commit -am "$args"
 }
 Set-Alias commit git_commit_function
 
 
 function git_checkout_function {
-	git checkout "$args[0]"
+	git checkout "$args"
 }
 Set-Alias checkout git_checkout_function
 
 
 function git_clone_function {
-	git clone "$args[0]"
+	git clone "$args"
 }
 Set-Alias clone git_clone_function
 
 
 function git_branch_function {
-	git branch "$args[0]"
+	git branch "$args"
 }
 Set-Alias branch git_branch_function
 
@@ -74,19 +92,3 @@ function git_unstage_function {
 }
 Set-Alias unstage git_unstage_function
 
-function touch_function {
-	New-Item "$args"
-}
-Set-Alias touch touch_function
-
-
-function find_function {
-	Get-ChildItem -Filter "$args" -Recurse -File
-}
-Set-Alias find find_function
-
-
-function ping_function {
-	Test-Connection "$args" | Format-Table -AutoSize
-}
-Set-Alias ping ping_function
