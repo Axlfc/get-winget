@@ -16,6 +16,13 @@ function ping_function {
 Set-Alias ping ping_function
 
 
+function webserver_function {
+	start http://localhost:4000/
+	bundle exec jekyll serve
+}
+Set-Alias webserver webserver_function
+
+
 function git_pull_function {
 	git pull "$args"
 }
