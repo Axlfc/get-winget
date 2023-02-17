@@ -1,5 +1,6 @@
 Set-ExecutionPolicy RemoteSigned
-$MyLink = "https://github.com/microsoft/winget-cli/releases/download/v1.3.431/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+$MyLink = "https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+
 
 
 Write-Host "Winget is being downloaded"
