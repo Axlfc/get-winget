@@ -5,6 +5,44 @@ function a_function {
 Set-Alias a a_function
 
 
+function c_function {
+	cls
+}
+Set-Alias c c_function
+
+
+function d_function {
+    if ($args.Count -eq 2) {
+        if (Test-Path ".git") {
+            git diff --color-words $args[0] $args[1]
+        } else {
+            git diff --color-words --no-index $args[0] $args[1]
+        }
+    } elseif ($args.Count -eq 1) {
+        if (Test-Path ".git") {
+            git diff --color-words $args[0]
+        } else {
+            Write-Host "ERROR: If this is not a git directory you need at least two arguments to see any differences."
+        }
+    } elseif ($args.Count -eq 0) {
+        if (Test-Path ".git") {
+            git diff --color-words
+        } else {
+            Write-Host "ERROR: If this is not a git directory you need at least two arguments to see any differences."
+        }
+    } else {
+        if (Test-Path ".git") {
+            ForEach ($arg in $args) {
+                git diff --color-words $arg
+            }
+        } else {
+            Write-Host "ERROR: If this is not a git directory you need at least two arguments to see any differences."
+        }
+    }
+}
+Set-Alias d d_function
+
+
 function o_function {
     if ($args.Count -eq 0) {
         Invoke-Item (Get-Location)
