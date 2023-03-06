@@ -1,3 +1,13 @@
+function o_function {
+    if ($args.Count -eq 0) {
+        Invoke-Item (Get-Location)
+    }
+    else {
+        Invoke-Item $args[0]
+    }
+}
+
+
 function touch_function {
 	New-Item "$args"
 }
