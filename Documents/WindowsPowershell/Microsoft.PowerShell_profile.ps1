@@ -6,6 +6,7 @@ function o_function {
         Invoke-Item $args[0]
     }
 }
+Set-Alias o o_function
 
 
 function touch_function {
