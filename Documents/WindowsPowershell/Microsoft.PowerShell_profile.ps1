@@ -43,6 +43,133 @@ function d_function {
 Set-Alias d d_function
 
 
+function f_function {
+  [CmdletBinding()]
+  param(
+    [Parameter(Position=0, ValueFromRemainingArguments=$true)]
+    [string[]]$args
+  )
+
+  if ($args.Count -eq 0) {  # No arguments given
+    Get-ChildItem . -Recurse -ErrorAction SilentlyContinue
+  }
+  elseif ($args.Count -eq 1) {
+    if (Test-Path $args[0] -PathType Leaf) {  # Searches therm in a file
+      Get-Content $args[0]
+    }
+    elseif (Test-Path $args[0] -PathType Container) {  # Searches files in directory
+      Get-ChildItem $args[0] -Recurse -ErrorAction SilentlyContinue
+    }
+    else {  # Searches therm in all files
+      Get-ChildItem . -Recurse -ErrorAction SilentlyContinue |
+        ForEach-Object { Get-Content $_.FullName } |
+        Select-String $args[0]
+    }
+  }
+  elseif ($args.Count -gt 1) {
+    $temp = $args[0]
+    $i = 1
+    while ($i -lt $args.Count) {
+      if (Test-Path $temp -PathType Leaf) {  # Searches therm in a file
+        Get-Content $temp | Select-String $args[$i]
+      }
+      elseif (Test-Path $temp -PathType Container) {  # Searches file in directory
+        $files = Get-ChildItem $temp -Recurse -ErrorAction SilentlyContinue |
+          Where-Object { $_.Name -like $args[$i] }
+        if ($files.Count -gt 0) {  # Show files matching argument
+          Get-Content $files.FullName
+        }
+        else {  # Show list of other matching files in elements of directory
+          Get-ChildItem $temp -Recurse -ErrorAction SilentlyContinue |
+            ForEach-Object { Get-Content $_.FullName } |
+            Select-String $args[$i]
+        }
+      }
+      else {  # Literal search in therm
+        $temp | Select-String $args[$i]
+      }
+      $i += 1
+    }
+  }
+}
+Set-Alias f f_function
+
+
+function i_function {
+  if ($args.Count -eq 0) {
+    Get-ChildItem -Directory -Path $PWD -Recurse | Select-Object FullName
+  } else {
+    ForEach ($arg in $args) {
+      if (Test-Path $arg -PathType Container) {
+        Get-ChildItem -Directory -Path $arg -Recurse | Select-Object FullName
+      } else {
+        Write-Host "ERROR: A valid path to a folder is expected, skipping argument $arg"
+      }
+    }
+  }
+}
+Set-Alias i i_function
+
+
+function j_function { 
+	Get-Job | Format-List -Property ID, Name, State, HasMoreData, Location, Command, InstanceID 
+}
+Set-Alias j j_function
+
+
+function k_function {
+  param(
+    [int]$port = 0
+  )
+  if ($port -eq 0) {
+    # Ask for port number to kill
+    Write-Host "Kill port number:"
+    $portkillnumber = Read-Host
+    $pids = (Get-NetTCPConnection -LocalPort $portkillnumber -ErrorAction SilentlyContinue).OwningProcess
+  } else {
+    $pids = (Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue).OwningProcess
+  }
+  if (-not $pids) {
+    Write-Host "No process found listening on port $($port -or $portkillnumber)"
+    return
+  }
+  foreach ($pid in $pids) {
+    try {
+      $process = Get-Process -Id $pid -ErrorAction Stop
+      $process.Kill()
+      Write-Host "Process with ID $($process.Id) killed"
+    } catch {
+      Write-Host "Failed to kill process with ID $pid"
+    }
+  }
+}
+Set-Alias k k_function
+
+
+function l_function {
+    ls -Force -Hidden | Format-Table -AutoSize
+}
+Set-Alias l l_function
+
+
+function u {
+    if ($args.Count -eq 0) {
+        Write-Output "ERROR: You need to provide at least one argument"
+        return
+    }
+    else {
+        foreach ($url_address in $args) {
+            if ($url_address -match '^[a-z]+://') {
+                Start-Process $url_address
+            }
+            else {
+                Start-Process "https://$url_address"
+            }
+        }
+    }
+}
+
+
 function o_function {
     if ($args.Count -eq 0) {
         Invoke-Item (Get-Location)
@@ -52,6 +179,45 @@ function o_function {
     }
 }
 Set-Alias o o_function
+
+
+function ipe {
+    $IP = Invoke-RestMethod -Uri 'https://api.ipify.org?format=text'
+    Write-Output "Your public IP Address is: $IP"
+}
+
+
+function ipi {
+    $ip = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias Wi-Fi).IPAddress
+    Write-Host "Your private IP Address is: $ip"
+}
+
+
+function ips {
+    # Get the IPv4 address for the default network adapter
+    $ipv4 = (Get-NetIPAddress | Where-Object { $_.AddressFamily -eq 'IPv4' -and $_.InterfaceAlias -eq (Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.Virtual -eq $false }).InterfaceAlias }).IPAddress
+
+    # Get the IPv4 address for the loopback adapter (localhost)
+    $ipv4loopback = (Get-NetIPAddress | Where-Object { $_.AddressFamily -eq 'IPv4' -and $_.InterfaceAlias -eq 'Loopback Pseudo-Interface 1' }).IPAddress
+
+    # Get the IPv6 address for the default network adapter
+    $ipv6 = (Get-NetIPAddress | Where-Object { $_.AddressFamily -eq 'IPv6' -and $_.InterfaceAlias -eq (Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.Virtual -eq $false }).InterfaceAlias }).IPAddress
+
+    # Get the link-local IPv6 address for the default network adapter
+    $ipv6linklocal = (Get-NetIPAddress | Where-Object { $_.AddressFamily -eq 'IPv6' -and $_.InterfaceAlias -eq (Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.Virtual -eq $false }).InterfaceAlias -and $_.PrefixOrigin -eq 'WellKnown' }).IPAddress
+
+    # Print the IPv4 address for the default network adapter
+    Write-Host "Private IPv4 Address: $ipv4"
+
+    # Print the IPv4 address for the loopback adapter
+    Write-Host "Loopback IPv4 Address: $ipv4loopback"
+
+    # Print the IPv6 address for the default network adapter
+    Write-Host "Private IPv6 Address: $ipv6"
+
+    # Print the link-local IPv6 address for the default network adapter
+    Write-Host "Link-local IPv6 Address: $ipv6linklocal"
+}
 
 
 function touch_function {
