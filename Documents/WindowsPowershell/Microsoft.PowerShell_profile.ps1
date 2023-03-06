@@ -1,3 +1,10 @@
+function a_function {
+	Write-Output '---------------Alias----------------'; 
+	Get-Command -CommandType Alias 
+}
+Set-Alias a a_function
+
+
 function o_function {
     if ($args.Count -eq 0) {
         Invoke-Item (Get-Location)
