@@ -37,9 +37,9 @@ $pop_apps = "Mozilla.Firefox",
 "RealVNC.VNCServer",
 "RealVNC.VNCViewer",
 "Audacity.Audacity",
-"JetBrains.PyCharm.Community",
 "BlenderFoundation.Blender",
-"Microsoft.WindowsTerminal"
+"Microsoft.WindowsTerminal",
+"JetBrains.PyCharm.Community"
 
 foreach ($pop_app in $pop_apps)
 {
