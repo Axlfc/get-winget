@@ -39,6 +39,7 @@ $pop_apps = "Mozilla.Firefox",
 "Audacity.Audacity",
 "BlenderFoundation.Blender",
 "Microsoft.WindowsTerminal",
+"Unity.UnityHub",
 "JetBrains.PyCharm.Community"
 
 foreach ($pop_app in $pop_apps)
