@@ -37,6 +37,7 @@ $pop_apps = "Mozilla.Firefox",
 "RealVNC.VNCServer",
 "RealVNC.VNCViewer",
 "Audacity.Audacity",
+"JetBrains.PyCharm.Community",
 "BlenderFoundation.Blender",
 "Microsoft.WindowsTerminal"
 
