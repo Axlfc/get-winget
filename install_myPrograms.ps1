@@ -41,7 +41,8 @@ $pop_apps = "Mozilla.Firefox",
 "Microsoft.WindowsTerminal",
 "Unity.UnityHub",
 "AnyDeskSoftwareGmbH.AnyDesk",
-"JetBrains.PyCharm.Community"
+"JetBrains.PyCharm.Community",
+"Microsoft.DotNet.SDK.7"
 
 foreach ($pop_app in $pop_apps)
 {
