@@ -42,6 +42,7 @@ $pop_apps = "Mozilla.Firefox",
 "Unity.UnityHub",
 "AnyDeskSoftwareGmbH.AnyDesk",
 "JetBrains.PyCharm.Community",
+"Fork.Fork",
 "Microsoft.DotNet.SDK.7",
 "VSCodium.VSCodium.Insiders"
 
