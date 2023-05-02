@@ -7,6 +7,8 @@ function Populate-Windows {
 $pop_apps = "Mozilla.Firefox", 
 "EpicGames.EpicGamesLauncher", 
 "Spotify.Spotify",
+"WhatsApp.WhatsApp",
+"Telegram.TelegramDesktop",
 "Bandisoft.Honeyview",
 "VideoLAN.VLC",
 "Valve.Steam",
