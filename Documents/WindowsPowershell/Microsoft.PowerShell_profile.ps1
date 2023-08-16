@@ -321,3 +321,20 @@ function git_unstage_function {
 }
 Set-Alias unstage git_unstage_function
 
+
+function steamshare {
+    $firewallRule = Get-NetFirewallRule -DisplayName "Steamshare"
+
+    if ($firewallRule) {
+        if ($firewallRule.Enabled -eq "False") {
+            Write-Host "SteamShare firewall rule is disabled. Enabling..."
+			Enable-NetFirewallRule -DisplayName "Steamshare"
+        } else {
+			Write-Host "SteamShare firewall rule is enabled. Disabling..."
+			Disable-NetFirewallRule -DisplayName "Steamshare"
+        }
+    } else {
+        Write-Host "SteamShare firewall rule not found. Enabling..."
+        New-NetFirewallRule -DisplayName "Steamshare" -Direction Outbound -Program "C:\Program Files (x86)\Steam\steam.exe" -Action Allow
+    }
+}
