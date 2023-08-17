@@ -338,3 +338,109 @@ function steamshare {
         New-NetFirewallRule -DisplayName "Steamshare" -Direction Outbound -Program "C:\Program Files (x86)\Steam\steam.exe" -Action Allow
     }
 }
+
+
+function speed {
+    # The test file has to be a 10MB file for the math to work. If you want to change sizes, modify the math to match
+    $TestFile = 'https://ftp.sunet.se/mirror/parrotsec.org/parrot/misc/10MB.bin'
+    $TempFile = Join-Path -Path $env:TEMP -ChildPath 'testfile.tmp'
+    $WebClient = New-Object Net.WebClient
+    $TimeTaken = Measure-Command { $WebClient.DownloadFile($TestFile,$TempFile) } | Select-Object -ExpandProperty TotalSeconds
+    $SpeedMbps = (10 / $TimeTaken) * 8
+    $Message = "{0:N2} Mbit/sec" -f ($SpeedMbps)
+    $Message
+}
+
+# Install yt_dlp if not already installed
+# pip install yt-dlp
+
+function download_video {
+    param (
+        [string]$url,
+        [string]$outputDirectory = "."
+    )
+
+    yt-dlp $url -f mp4 -o "$outputDirectory/%(title)s.%(ext)s"
+}
+
+function download_audio {
+    param (
+        [string]$url,
+        [string]$outputDirectory = "."
+    )
+
+    yt-dlp -x --audio-format wav $url -o "$outputDirectory/%(title)s.%(ext)s"
+}
+
+function download_video_playlist {
+    param (
+        [string]$url,
+        [string]$outputDirectory = "."
+    )
+
+    yt-dlp --yes-playlist --format mp4 $url -o "$outputDirectory/%(playlist_title)s/%(title)s.%(ext)s"
+}
+
+function download_audio_playlist {
+    param (
+        [string]$url,
+        [string]$outputDirectory = "."
+    )
+
+    yt-dlp -x --audio-format wav --yes-playlist $url -o "$outputDirectory/%(playlist_title)s/%(title)s.%(ext)s"
+}
+
+function wav_to_mp3 {
+    param (
+        [string]$inputPath,
+        [string]$outputPath = $null
+    )
+
+    # Check if input file exists
+    if (-not (Test-Path $inputPath -PathType Leaf)) {
+        Write-Host "Error: Input WAV file not found."
+        return
+    }
+
+    # Determine output path
+    if (-not $outputPath) {
+        $outputPath = [System.IO.Path]::ChangeExtension($inputPath, "mp3")
+    } elseif (Test-Path $outputPath -PathType Container) {
+        # If $outputPath is a directory path, use input filename with mp3 extension
+        $outputFileName = [System.IO.Path]::GetFileNameWithoutExtension($inputPath) + ".mp3"
+        $outputPath = [System.IO.Path]::Combine($outputPath, $outputFileName)
+    }
+
+    # Convert WAV to MP3 using FFmpeg
+    & ffmpeg -i "$inputPath" "$outputPath"
+
+    Write-Host "Conversion completed: $inputPath -> $outputPath"
+}
+
+
+function batch_wav_to_mp3 {
+    param (
+        [string]$inputPath = $null,
+        [string]$outputPath = $null
+    )
+
+    if (-not $inputPath) {
+        $inputPath = Get-Location
+    }
+
+    # If output path is not provided, perform in-place conversion
+    if (-not $outputPath) {
+        $outputPath = $inputPath
+        $inputPath = Get-Location
+    }
+
+    # Convert WAV files to MP3
+    $wavFiles = Get-ChildItem -Path $inputPath -Filter "*.wav" -File
+    foreach ($wavFile in $wavFiles) {
+        $mp3FileName = [System.IO.Path]::ChangeExtension($wavFile.Name, "mp3")
+        $mp3FilePath = Join-Path -Path $outputPath -ChildPath $mp3FileName
+        & ffmpeg -i $wavFile.FullName $mp3FilePath
+        Write-Host "Conversion completed: $($wavFile.FullName) -> $mp3FilePath"
+    }
+}
+
