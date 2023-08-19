@@ -48,7 +48,8 @@ $pop_apps = "Mozilla.Firefox",
 "JetBrains.PyCharm.Community",
 "Fork.Fork",
 "Microsoft.DotNet.SDK.7",
-"VSCodium.VSCodium.Insiders"
+"VSCodium.VSCodium.Insiders",
+"VB-Audio.Voicemeeter.Banana"
 
 foreach ($pop_app in $pop_apps)
 {
