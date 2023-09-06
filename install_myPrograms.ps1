@@ -49,7 +49,8 @@ $pop_apps = "Mozilla.Firefox",
 "Fork.Fork",
 "Microsoft.DotNet.SDK.7",
 "VSCodium.VSCodium.Insiders",
-"VB-Audio.Voicemeeter.Banana"
+"VB-Audio.Voicemeeter.Banana",
+"OpenVPNTechnologies.OpenVPNConnect"
 
 foreach ($pop_app in $pop_apps)
 {
