@@ -48,6 +48,7 @@ $pop_apps = "Mozilla.Firefox",
 "JetBrains.PyCharm.Community",
 "Fork.Fork",
 "Microsoft.DotNet.SDK.7",
+"Microsoft.PowerToys",
 "VSCodium.VSCodium.Insiders",
 "VB-Audio.Voicemeeter.Banana",
 "OpenVPNTechnologies.OpenVPNConnect"
