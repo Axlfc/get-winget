@@ -4,7 +4,9 @@ function Populate-Windows {
 	)
 	winget install -e --id $ProgramName --force
 }
-$pop_apps = "Mozilla.Firefox", 
+$pop_apps = "Mozilla.Firefox",
+"Kitware.CMake",
+"Microsoft.VisualStudio.2022.BuildTools",
 "EpicGames.EpicGamesLauncher", 
 "Spotify.Spotify",
 "Ytmdesktop.Ytmdesktop",
