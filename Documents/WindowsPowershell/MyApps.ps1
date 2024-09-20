@@ -41,8 +41,8 @@ function Add-PathAndAlias {
         $env:Path += ";$path"
         # Write-Host "Added '$path' to the PATH environment variable." -ForegroundColor Green
     } else {
-        # Write-Host "The path '$path' is already in the PATH environment variable." -ForegroundColor Yellow
-		return
+        Write-Host "The path '$path' is already in the PATH environment variable." -ForegroundColor Yellow
+	return
     }
 
     # Create a new function that launches the executable with or without arguments
