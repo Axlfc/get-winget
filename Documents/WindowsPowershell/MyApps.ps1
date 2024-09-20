@@ -4,7 +4,7 @@
 $MyApps = @(
     @{
         alias = "pycharm"
-        path = "C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2023.3.2\bin"
+        path = "C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2023.3.3\bin\"
         executable = "pycharm64.exe"
     }
     # Add more app configurations here as needed, for example:
