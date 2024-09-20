@@ -444,3 +444,8 @@ function batch_wav_to_mp3 {
     }
 }
 
+
+function today_function {
+	return Get-Date
+}
+Set-Alias today today_function
