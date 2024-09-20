@@ -72,4 +72,4 @@ function Load-MyApps {
 }
 
 # Call Load-MyApps function
-Load-MyApps
+# Load-MyApps
