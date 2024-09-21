@@ -6,6 +6,7 @@ function Populate-Windows {
 }
 $pop_apps = "Microsoft.AppInstaller",
 "7zip.7zip",
+"Gyan.FFmpeg",
 "yt-dlp.yt-dlp",
 "Google.PlayGames.Beta",
 "Mozilla.Firefox",
