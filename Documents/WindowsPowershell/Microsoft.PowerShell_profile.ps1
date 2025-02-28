@@ -444,6 +444,141 @@ function batch_wav_to_mp3 {
     }
 }
 
+function batch_wav_to_mp3 {
+    param (
+        [string]$inputPath = $null,
+        [string]$outputPath = $null
+    )
+
+    if (-not $inputPath) {
+        $inputPath = Get-Location
+    }
+
+    # If output path is not provided, perform in-place conversion
+    if (-not $outputPath) {
+        $outputPath = $inputPath
+        $inputPath = Get-Location
+    }
+
+    # Convert WAV files to MP3
+    $wavFiles = Get-ChildItem -Path $inputPath -Filter "*.wav" -File
+    foreach ($wavFile in $wavFiles) {
+        $mp3FileName = [System.IO.Path]::ChangeExtension($wavFile.Name, "mp3")
+        $mp3FilePath = Join-Path -Path $outputPath -ChildPath $mp3FileName
+        & ffmpeg -i $wavFile.FullName $mp3FilePath
+        Write-Host "Conversion completed: $($wavFile.FullName) -> $mp3FilePath"
+    }
+}
+
+
+function webp_to_png {
+    param (
+        [string]$inputPath,
+        [string]$outputPath = $null
+    )
+
+    # Check if input file exists
+    if (-not (Test-Path $inputPath -PathType Leaf)) {
+        Write-Host "Error: Input WEBP file not found."
+        return
+    }
+
+    # Determine output path
+    if (-not $outputPath) {
+        $outputPath = [System.IO.Path]::ChangeExtension($inputPath, "png")
+    } elseif (Test-Path $outputPath -PathType Container) {
+        # If $outputPath is a directory path, use input filename with png extension
+        $outputFileName = [System.IO.Path]::GetFileNameWithoutExtension($inputPath) + ".png"
+        $outputPath = [System.IO.Path]::Combine($outputPath, $outputFileName)
+    }
+
+    # Convert WEBP to PNG using FFmpeg
+    & ffmpeg -i "$inputPath" "$outputPath"
+
+    Write-Host "Conversion completed: $inputPath -> $outputPath"
+}
+
+
+function batch_webp_to_png {
+    param (
+        [string]$inputPath = $null,
+        [string]$outputPath = $null
+    )
+
+    if (-not $inputPath) {
+        $inputPath = Get-Location
+    }
+
+    # If output path is not provided, perform in-place conversion
+    if (-not $outputPath) {
+        $outputPath = $inputPath
+        $inputPath = Get-Location
+    }
+
+    # Convert WEBP files to PNG
+    $webpFiles = Get-ChildItem -Path $inputPath -Filter "*.webp" -File
+    foreach ($webpFile in $webpFiles) {
+        $pngFileName = [System.IO.Path]::ChangeExtension($webpFile.Name, "png")
+        $pngFilePath = Join-Path -Path $outputPath -ChildPath $pngFileName
+        & ffmpeg -i $webpFile.FullName $pngFilePath
+        Write-Host "Conversion completed: $($webpFile.FullName) -> $pngFilePath"
+    }
+}
+
+
+function m4a_to_wav {
+    param (
+        [string]$inputPath,
+        [string]$outputPath = $null
+    )
+
+    # Check if input file exists
+    if (-not (Test-Path $inputPath -PathType Leaf)) {
+        Write-Host "Error: Input M4A file not found."
+        return
+    }
+
+    # Determine output path
+    if (-not $outputPath) {
+        $outputPath = [System.IO.Path]::ChangeExtension($inputPath, "wav")
+    } elseif (Test-Path $outputPath -PathType Container) {
+        # If $outputPath is a directory path, use input filename with wav extension
+        $outputFileName = [System.IO.Path]::GetFileNameWithoutExtension($inputPath) + ".wav"
+        $outputPath = [System.IO.Path]::Combine($outputPath, $outputFileName)
+    }
+
+    # Convert M4A to WAV using FFmpeg
+    & ffmpeg -i "$inputPath" "$outputPath"
+
+    Write-Host "Conversion completed: $inputPath -> $outputPath"
+}
+
+function batch_m4a_to_wav {
+    param (
+        [string]$inputPath = $null,
+        [string]$outputPath = $null
+    )
+
+    if (-not $inputPath) {
+        $inputPath = Get-Location
+    }
+
+    # If output path is not provided, perform in-place conversion
+    if (-not $outputPath) {
+        $outputPath = $inputPath
+        $inputPath = Get-Location
+    }
+
+    # Convert M4A files to WAV
+    $m4aFiles = Get-ChildItem -Path $inputPath -Filter "*.m4a" -File
+    foreach ($m4aFile in $m4aFiles) {
+        $wavFileName = [System.IO.Path]::ChangeExtension($m4aFile.Name, "wav")
+        $wavFilePath = Join-Path -Path $outputPath -ChildPath $wavFileName
+        & ffmpeg -i $m4aFile.FullName $wavFilePath
+        Write-Host "Conversion completed: $($m4aFile.FullName) -> $wavFilePath"
+    }
+}
+
 
 function today_function {
 	return Get-Date
